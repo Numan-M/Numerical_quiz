@@ -23,8 +23,14 @@ class Quiz:
         # log correct answers
         # log end time
         # show summary
-        pass
-    def ask(self,questions):
+        self.start_time = datetime.datetime.now()
+        for question in self.questions:
+            self.answers.append(self.ask(question))
+        else: # runs after the for loop completes (more like a "Then" rather than an "else")
+            self.end_time = datetime.datetime.now()
+        return self.summary()
+        
+    def ask(self,question):
         # log start time
         # capture answer
         # check answer
@@ -32,6 +38,14 @@ class Quiz:
         # if answer is correct send back True
         # else False
         # send back elapsed time
+        correct = False
+        question_start = datetime.datetime.now()
+        answer = input(f'{question.text} = ')
+        if answer == str(question.answer):
+            correct = True
+        
+        question_end = datetime.datetime.now()
+        return correct, question_end - question_start
         pass
     def total_correct(self):
         # return the total number of correct answers
@@ -40,10 +54,14 @@ class Quiz:
             if answer[0]:
                 total +=1
         return total
-        
+
     def summary(self):
         # print how many correct out of total eg 5/10
         # print total time
 
-        print(f'You got {self.total_correct}/{len(self.questions)}')
-        print(f'Completion time: {(self.endtime - self.starttime).seconds}')
+        print(f'You got {self.total_correct()}/{len(self.questions)}')
+        print(f'Completion time: {(self.end_time - self.start_time).seconds} seconds')
+
+if __name__ == '__main__':
+    quiz1 = Quiz()
+    quiz1.take_quiz()
