@@ -1,0 +1,31 @@
+import datetime
+import random
+
+from questions import Add, Multiply, Subtract
+
+class Quiz:
+    questions = []
+    answers = []
+
+    def __init__(self):
+        # generate 10 random question with numbers from 1 to 10
+        # add these questions to self.questions
+
+    def take_quiz(self):
+        # log the start time
+        # ask all of the questions
+        # log correct answers
+        # log end time
+        # show summary
+    
+    def ask(self,questions):
+        # log start time
+        # capture answer
+        # check answer
+        # log end time
+        # if answer is correct send back True
+        # else False
+        # send back elapsed time
+    def summary(self):
+        # print how many correct out of total eg 5/10
+        # print total time
